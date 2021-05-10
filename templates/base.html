@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+
     <link rel="stylesheet" href="{{ url_for('static, filename='dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static, filename='css/style.css') }}">
+    {% block styles %}
+    {% end block %}
     <title>PUDDING RECIPES</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -43,60 +47,8 @@
 
     {% endblock %}
     <!-- Page content-->
-    <div class="container">
-        <div class="row">
-            <!-- Blog entries-->
-            <div class="col-md-8">
-                <h1 class="my-4">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-                <!-- Blog post-->
-                <div class="card mb-4">
-                    <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="Card image cap" />
-                    <div class="card-body">
-                        <h2 class="card-title">Post Title</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi
-                            vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a class="btn btn-primary" href="#!">Read More →</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2021 by
-                        <a href="#!">Start Bootstrap</a>
-                    </div>
-                </div>
-                <!-- Blog post-->
-                <div class="card mb-4">
-                    <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="Card image cap" />
-                    <div class="card-body">
-                        <h2 class="card-title">Post Title</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi
-                            vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a class="btn btn-primary" href="#!">Read More →</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2021 by
-                        <a href="#!">Start Bootstrap</a>
-                    </div>
-                </div>
-                <!-- Blog post-->
-                <div class="card mb-4">
-                    <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="Card image cap" />
-                    <div class="card-body">
-                        <h2 class="card-title">Post Title</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi
-                            vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a class="btn btn-primary" href="#!">Read More →</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2021 by
-                        <a href="#!">Start Bootstrap</a>
-                    </div>
-                </div>
-                <!-- Pagination-->
+
+           <!-- Pagination-->
                 <ul class="pagination justify-content-center mb-4">
                     <li class="page-item"><a class="page-link" href="#!">← Older</a></li>
                     <li class="page-item disabled"><a class="page-link" href="#!">Newer →</a></li>
@@ -146,6 +98,29 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <!-- Blog entries-->
+            <div class="col-md-8">
+                <h1 class="my-4">
+                    Page Heading
+                    <small>Secondary Text</small>
+                </h1>
+                <!-- Blog post-->
+                <div class="card mb-4">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1586195831043-72f28861359d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODl8fGRlc3NlcnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=100" alt="Image of desserts" />
+                    <div class="card-body">
+                        <h2 class="card-title">Post Title</h2>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
+                            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi
+                            vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                        <a class="btn btn-primary" href="#!">Read More →</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on January 1, 2021 by
+                        <a href="#!">Start Bootstrap</a>
+                    </div>
+                </div>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
@@ -158,6 +133,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     {% block scripts %}
     {% endblock %}
 
