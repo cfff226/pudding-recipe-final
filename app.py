@@ -12,12 +12,12 @@ def index():
 
 @app.route("/")
 def recipes():
-    return render_template("recipes.html")
+    return render_template("recipes.html", page_title="Recipes")
 
 
 @app.route("/")
 def login():
-    return render_template("login.html")
+    return render_template("login.html", page_title="Log In")
 
 
 if __name__ == "__main__":
