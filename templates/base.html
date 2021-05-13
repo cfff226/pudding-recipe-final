@@ -28,15 +28,10 @@
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#!">
-                            Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
                     <li><a href="{{ url_for('index') }}">HOME</a></li>
                     <li><a href="{{ url_for('recipes') }}">RECIPES</a></li>
                     <li><a href="{{ url_for('login') }}">LOG IN</a></li>
+                    <li><a href="{{ url_for('register') }}">REGISTER</a></li>
                 </ul>
             </div>
         </div>
@@ -82,23 +77,6 @@
                     Page Heading
                     <small>Secondary Text</small>
                 </h1>
-                <!-- Blog post-->
-                <div class="card mb-4">
-                    <img class="card-img-top"
-                        src="https://images.unsplash.com/photo-1586195831043-72f28861359d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODl8fGRlc3NlcnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=100"
-                        alt="Image of desserts" />
-                    <div class="card-body">
-                        <h2 class="card-title">Post Title</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                            aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi
-                            vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                        <a class="btn btn-primary" href="#!">Read More →</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2021 by
-                        <a href="#!">Start Bootstrap</a>
-                    </div>
-                </div>
                 <!-- Footer-->
                 <footer class="py-5 bg-dark">
                     <div class="container">
