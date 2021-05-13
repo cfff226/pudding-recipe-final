@@ -13,17 +13,17 @@ def index():
     return render_template("base.html")
 
 
-@app.route("/")
+@app.route("/recipes")
 def recipes():
     return render_template("recipes.html", page_title="Recipes")
 
 
-@app.route("/")
+@app.route("/login")
 def login():
     return render_template("login.html", page_title="Log In")
 
 
-@app.route("/")
+@app.route("/register")
 def register():
     return render_template("register.html", page_title="Register")
     
