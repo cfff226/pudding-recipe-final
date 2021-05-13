@@ -1,4 +1,26 @@
-{% extends "register.html" %}
+{% extends "base.html" %}
 {% block content %}
-    <h1>{{ page_title }}</h1>
+<h1>{{ page_title }}</h1>
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                <label for="first_name">USERNAME</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">PASSWORD</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">SUBMIT
+            <i class="material-icons right"></i>
+        </button>
+
+</div>
+</form>
+</div>
+
 {% endblock %}
