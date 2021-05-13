@@ -9,8 +9,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 
 @app.route("/")
-def index():
-    return render_template("base.html")
+def home():
+    return render_template("home.html", page_title="Home")
 
 
 @app.route("/recipes")
