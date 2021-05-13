@@ -5,6 +5,7 @@ if os.path.exists("env.py"):
 
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY")
 
 
 @app.route("/")
@@ -21,6 +22,11 @@ def recipes():
 def login():
     return render_template("login.html", page_title="Log In")
 
+
+@app.route("/")
+def register():
+    return render_template("register.html", page_title="Register")
+    
 
 if __name__ == "__main__":
     app.run(
