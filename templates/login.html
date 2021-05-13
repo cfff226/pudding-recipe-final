@@ -1,4 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Log In</h1>
+    <h1>{{ page_title }}</h1>
+
+    <form>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+            </div>
+        </div>
+    </form>
+
 {% endblock %}
