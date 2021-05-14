@@ -7,8 +7,8 @@ if os.path.exists("env.py"):
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY")
 
-
 @app.route("/")
+@app.route("/home")
 def home():
     return render_template("home.html", page_title="Home")
 
