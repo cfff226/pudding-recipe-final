@@ -35,6 +35,8 @@ def login():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
     return render_template("register.html", page_title="Register")
     
 
