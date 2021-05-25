@@ -2,7 +2,7 @@
 {% block content %}
 <h1>{{ page_title }}</h1>
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" method="POST" action="{{ url_for('register') }}">
         <div class="row">
             <div class="input-field col s6">
                 <input placeholder="Placeholder" id="first_name" type="text" class="validate">
