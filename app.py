@@ -28,8 +28,11 @@ def recipes():
     return render_template("recipes.html", page_title="Recipes")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        # Check if username exists in database
+         existing_user = mongo.db.users.find_one({"username": request.form.get("username")}).lower()})
     return render_template("login.html", page_title="Log In")
 
 
