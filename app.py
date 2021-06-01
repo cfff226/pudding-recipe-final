@@ -32,9 +32,14 @@ def recipes():
 def login():
     if request.method == "POST":
         # Check if username exists in database
-         existing_user = mongo.db.users.find_one({"username": request.form.get("username")}).lower()})
-    return render_template("login.html", page_title="Log In")
+         existing_user = mongo.db.users.find_one(
+             {"username": request.form.get("username")}).lower()})
 
+if existing_user:
+    # Make sure hashed password matches user input
+    if check_password_hash(
+        existing_user["password"], request.form.get("password")):
+    return render_template("login.html", page_title="Log In")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
