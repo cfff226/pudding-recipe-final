@@ -42,15 +42,15 @@ def login():
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                # Invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login", _external=True, _scheme='https'))
+
         else:
-            # Invalid password match
+            # Username does not exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login", _external=True, _scheme='https'))
-
-    else:
-        # Username does not exist
-        flash("Incorrect Username and/or Password")
-        return redirect(url_for("login", _external=True, _scheme='https'))
    
     return render_template("login.html", page_title="Log In")
 
