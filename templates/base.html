@@ -32,6 +32,7 @@
                     <li><a href="{{ url_for('recipes') }}">RECIPES</a></li>
                     <li><a href="{{ url_for('login') }}">LOG IN</a></li>
                     <li><a href="{{ url_for('register') }}">REGISTER</a></li>
+                    <li><a href="{{ url_for('profile, username=session['user']) }}">RECIPES</a></li>
                 </ul>
             </div>
         </div>
