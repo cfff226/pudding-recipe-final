@@ -55,6 +55,12 @@ def login():
     return render_template("login.html", page_title="Log In")
 
 
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+        return render_template("profile.html", username=username)
+
 @ app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
