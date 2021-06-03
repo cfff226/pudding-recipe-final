@@ -91,7 +91,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration successful!")
         return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html")
+    return render_template("register.html", page_title="Register")
 
 
 if __name__ == "__main__":
