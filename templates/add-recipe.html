@@ -1,17 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Add your recipe</h1>
-    <form action="#">
+<h1>Add your recipe</h1>
+<form class="col" method="POST" action="{{ url_for('add_dessert') }}">
+    <!-- Upload a photo of the dessert -->
     <div class="file-field input-field">
-      <div class="btn">
-        <span>File</span>
-        <input type="file">
-      </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
-      </div>
+        <div class="btn">
+            <span>File</span>
+            <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
     </div>
-  </form>
-  
-        
+</form>
+<!-- Input field for dessert name -->
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Placeholder" id="dessert_name" type="text" class="dessert_name">
+                <label for="dessert_name">Dessert name</label>
+            </div>
+            <!-- Input field for dessert ingredients -->
+            <div class="input-field col s6">
+                <input id="dessert_ingredients" type="text" class="dessert_ingredients">
+                <label for="dessert_ingredients">ingredients</label>
+            </div>
+        </div>
+        <!-- Input field for dessert instructions -->
+        <div class="row">
+            <div class="col s12">
+                This is an inline input field:
+                <div class="input-field inline">
+                    <input id="dessert_instructions" type="text" class="dessert_instructions">
+                    <label for="dessert_instructions">Instructions</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 {% endblock %}
