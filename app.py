@@ -23,6 +23,12 @@ mongo = PyMongo(app)
 def home():
     return render_template("home.html", page_title="Home")
 
+# Retrieve recipe data from mongodb
+@app.route("/get_recipes")
+def get_recipes():
+    dessert_recipes = list(mongo.db.recipes.find())
+    return render_template("recipes.html", recipes=recipes)
+
 
 @app.route("/recipes")
 def recipes():
@@ -83,7 +89,7 @@ def add_recipe():
         }
     mongo.db.recipes.insert_one(dessert_recipe)
     flash("Thanks! Your recipe has been added")
-
+    return redirect(url_for("get_"))
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
