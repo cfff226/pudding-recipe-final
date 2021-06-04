@@ -72,11 +72,15 @@ def profile(username):
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    # Get users form input and send to database 
     if request.method == "POST":
         dessert_recipe = {
-
+            "dessert_name": request.form.get("dessert_name"),
+            "dessert_image": request.form.get("dessert_image"),
+            "dessert_ingredients": request.form.get("dessert_ingredients"),
+            "dessert_instructions": request.form.get("dessert_instructions"),
+            "created_by": session["user"]
         }
-
 
 
 @app.route("/register", methods=["GET", "POST"])
