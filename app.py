@@ -81,6 +81,8 @@ def add_recipe():
             "dessert_instructions": request.form.get("dessert_instructions"),
             "created_by": session["user"]
         }
+    mongo.db.recipes.insert_one(dessert_recipe)
+    flash("Thanks! Your recipe has been added")
 
 
 @app.route("/register", methods=["GET", "POST"])
