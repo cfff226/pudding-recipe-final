@@ -70,7 +70,16 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-@ app.route("/register", methods=["GET", "POST"])
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    if request.method == "POST":
+        dessert_recipe = {
+
+        }
+
+
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         # Check if username exists in database
