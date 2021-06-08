@@ -34,7 +34,7 @@
             <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
                     class="material-icons right">more_vert</i></span>
             {{ if session["user"] }}
-            <p><a href="{{ url_for('save_recipe') }}">This is a link</a></p>
+            <p><a href="{{ url_for('save_recipe, recipe_id=recipe._id') }}">This is a link</a></p>
             {% endif %}
         </div>
         <!-- Dessert ingredients shown when image clicked -->
