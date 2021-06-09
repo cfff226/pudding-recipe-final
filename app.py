@@ -24,10 +24,12 @@ def home():
     return render_template("home.html", page_title="Home")
 
 # Retrieve recipe data from mongodb
+
+
 @app.route("/get_recipes")
 def get_recipes():
-    dessert_recipes = list(mongo.db.recipes.find())
-    return render_template("recipes.html", recipes=recipes)
+    recipe = list(mongo.db.recipes.find())
+    return render_template("recipes.html", recipe=recipe)
 
 
 @app.route("/recipes")
@@ -71,14 +73,23 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
+        # Display all of users recipes
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
 
 
+@app.route("/logout")
+def logout():
+    # Remove user from session cookies
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
-    # Get users form input and send to database 
+    # Get users form input and send to database
     if request.method == "POST":
         dessert_recipe = {
             "dessert_name": request.form.get("dessert_name"),
@@ -87,9 +98,13 @@ def add_recipe():
             "dessert_instructions": request.form.get("dessert_instructions"),
             "created_by": session["user"]
         }
-    mongo.db.recipes.insert_one(dessert_recipe)
-    flash("Thanks! Your recipe has been added")
-    return redirect(url_for("get_"))
+        # Post users input to Mongodb
+        mongo.db.recipes.insert_one(dessert_recipe)
+        flash("Thanks! Your recipe has been added")
+        return redirect(url_for("profile", username=session["user"]))
+
+    return render_template("add_recipe.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
