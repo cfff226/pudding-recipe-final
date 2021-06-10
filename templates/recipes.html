@@ -20,33 +20,32 @@
                 name="action">ADD
                 RECIPE
         </button>
+    </div>
 </section>
-</div>
 <section class="display-recipes">
     <!-- If the amount of recipes is greater than 0 -->
     {% if recipes|length > 0 %}
     <!-- For loop to display all recipes from mongodb -->
-    {% for recipes in recipes %}
+    {% for recipe in recipes %}
     <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="{{ recipes.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
+            <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
         </div>
         <!-- Dessert name -->
         <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ recipes.dessert_name }}<i
-                    class="material-icons right">more_vert</i></span>
+            <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
+                    class="material-icons right"></i></span>
             <!-- Save button for users who are logged in -->
-            {% if session["user"] %}
-            <p><a href="{{ url_for('save_recipe, recipe_id=recipes._id') }}">Save this recipe</a></p>
+        
         </div>
-        {% endif %}
+       
         <!-- Dessert ingredients shown when image clicked -->
         <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ recipes.dessert_name }}<i
+            <span class="card-title grey-text text-darken-4">{{ recipe.dessert_name }}<i
                     class="material-icons right">close</i></span>
-            <p class="dessert-ingredients">{{ recipes.dessert_ingredients }}</p>
+            <p class="dessert-ingredients">{{ recipe.dessert_ingredients }}</p>
             <!-- Dessert instructions shown when image clicked -->
-            <p class="dessert-instructions">{{ recipes.dessert_instructions }}</p>
+            <p class="dessert-instructions">{{ recipe.dessert_instructions }}</p>
         </div>
     </div>
     {% endfor %}
