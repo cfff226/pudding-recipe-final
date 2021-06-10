@@ -1,49 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Add your recipe</h1>
-<div class="row card-panel white">
-    <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
-        <!--Add desert name -->
-        <div class="row">
-            <div class="input-field col s11">
-                <textarea id="dessert_name" name="dessert_name" class="materialize-textarea validate"
-                    required></textarea>
-                <label for="dessert_name">Dessert name</label>
-            </div>
-        </div>
-        <!--Add dessert instructions -->
-        <div class="row">
-            <div class="input_instruc_wrap col s12">
-                <textarea id="dessert_instructions" class="materialize-textarea"></textarea>
-                <label for="dessert_instruction">Dessert instructions</label>
-                <button class="add_instruction_button">Add More Fields</button>
-                <div>
-                    <name="mytext[]">
+<div class="container-fluid">
+    <div class="row card-panel white center">
+        <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
+            <!--Add desert name -->
+            <div class="row">
+                <div class="input-field col s11">
+                    <textarea id="dessert_name" name="dessert_name" class="materialize-textarea validate"
+                        required></textarea>
+                    <label for="dessert_name">Dessert name</label>
                 </div>
             </div>
-        </div>
-        <!--Add dessert ingredients -->
-        <div class="row">
-            <div class="input_ingred_wrap col s12">
-                <textarea id="dessert_ingredients" class="materialize-textarea"></textarea>
-                <label for="dessert_ingredients">Dessert ingredients</label>
-                <button class="add_ingredient_button">Add More Fields</button>
-                <div>
-                    <name="mytext[]">
+            <!--Add dessert ingredients -->
+            <div class="row">
+                <div class="input_ingred_wrap col s12">
+                    <textarea id="dessert_ingredients" name="dessert_ingredients"
+                        class="materialize-textarea"></textarea>
+                    <label for="dessert_ingredients">Dessert ingredients</label>
+                    <button class="add_ingredient_button">Add More Fields</button>
+                    <div>
+                        <name="mytext[]">
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--Add dessert image -->
-        <form>
-            <div class="form-group" name="dessert_image">
-                <label for="dessert_image">Dessert image</label>
-                <input type="file" class="form-control-file" id="dessert_image">
+            <!--Add dessert instructions -->
+            <div class="row">
+                <div class="input_instruc_wrap col s12">
+                    <textarea id="dessert_instructions" name="dessert_instructions"
+                        class="materialize-textarea"></textarea>
+                    <label for="dessert_instruction">Dessert instructions</label>
+                    <button class="add_instruction_button">Add More Fields</button>
+                    <div>
+                        <name="mytext[]">
+                    </div>
+                </div>
             </div>
-            <!-- Submit button -->
-            <button class="btn waves-effect waves-light" a href="{{ url_for('get_recipes') }}" type="submit"
-                name="action">
-                <i class="material-icons right">SUBMIT RECIPE</i>
-            </button>
-        </form>
-    </form>
-    {% endblock %}
+    </div>
+      <!-- Add dessert image url-->
+      <div class="row">
+         <div class="input-field col s11">
+            <textarea id="dessert_image" name="dessert_image" class="materialize-textarea validate" required></textarea>
+            <label for="dessert_image">Add Image URL</label>
+         </div>
+<a class="waves-effect waves-light btn-small">SUBMIT</a>
+         </div>
+      </div>
+
+        {% endblock %}
