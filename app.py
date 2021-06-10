@@ -95,11 +95,19 @@ def logout():
 def add_recipe():
     # Get users form input and send to database
     if request.method == "POST":
+        dessert_ingredients = request.form.getlist("dessert_ingredients")
+        ingredients_list = []
+        for ingredients in dessert_ingredients:
+            ingredients_list.append(ingredients)
+        dessert_instructions = request.form.getlist("dessert_instructions")
+        instructions_list = []
+        for instructions in dessert_instructions:
+            instructions_list.append(instructions)
         dessert_recipe = {
             "dessert_name": request.form.get("dessert_name"),
             "dessert_image": request.form.get("dessert_image"),
-            "dessert_ingredients": request.form.get("dessert_ingredients"),
-            "dessert_instructions": request.form.get("dessert_instructions"),
+            "dessert_ingredients": ingredients_list,
+            "dessert_instructions": instructions_list,
             "created_by": session["user"]
         }
         # Post users input to Mongodb
@@ -113,8 +121,6 @@ def add_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_recipe.html", categories=categories)
 
 
 @app.route("/register", methods=["GET", "POST"])
