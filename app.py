@@ -24,8 +24,6 @@ def home():
     return render_template("home.html", page_title="Home")
 
 # Retrieve recipe data from mongodb
-
-
 @app.route("/get_recipes")
 def get_recipes():
     recipe = list(mongo.db.recipes.find())
@@ -118,9 +116,15 @@ def add_recipe():
     return render_template("add_recipe.html")
 
 
+<<<<<<< HEAD
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
+=======
+@app.route("/edit_task/<task_id>", methods=["GET, POST"]
+def edit_task(task_id):
+    task = mongo.db.tasks.find_one({"id: ObjectId(task_id)")})
+>>>>>>> 61cb2d9d7691c3e4e0e37c8555ffdb21a9b64119
 
 
 @app.route("/register", methods=["GET", "POST"])
