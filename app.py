@@ -73,12 +73,12 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        # Display all of users recipes
-        return render_template("profile.html", username=username)
+    # Display all of users recipes
+        return render_template("profile.html", username=username, recipes=recipes)
 
-    return redirect(url_for("login"))
-
-
+    else:
+        return redirect(url_for("login"))
+   
 @app.route("/logout")
 def logout():
     # Remove user from session cookies
