@@ -27,6 +27,9 @@
     {% if recipes|length > 0 %}
     <!-- For loop to display all recipes from mongodb -->
     {% for recipe in recipes %}
+          <!-- Edit button for existing recipe -->
+        <a href="" class="waves-effect waves-light btn-small">Done</a>
+        <a href="" class="waves-effect waves-light btn-small">Edit</a>
     <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">

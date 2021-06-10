@@ -24,12 +24,11 @@ def home():
     return render_template("home.html", page_title="Home")
 
 # Retrieve recipe data from mongodb
-
-
 @app.route("/get_recipes")
 def get_recipes():
     recipe = list(mongo.db.recipes.find())
-    return render_template("recipes.html", recipe=recipe)
+    print(recipe)
+    return render_template("recipes.html", recipes=recipe)
 
 
 @app.route("/recipes")
@@ -73,12 +72,15 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-    # Display all of users recipes
-        return render_template("profile.html", username=username, recipes=recipes)
+        # Display all of users recipes
+        return render_template("profile.html",
+                               username=username,
+                               recipes=recipes)
 
     else:
         return redirect(url_for("login"))
-   
+
+
 @app.route("/logout")
 def logout():
     # Remove user from session cookies
@@ -104,6 +106,11 @@ def add_recipe():
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("add_recipe.html")
+
+
+@app.route("/edit_task/<task_id>", methods=["GET, POST"]
+def edit_task(task_id):
+    task = mongo.db.tasks.find_one({"id: ObjectId(task_id)")})
 
 
 @app.route("/register", methods=["GET", "POST"])
