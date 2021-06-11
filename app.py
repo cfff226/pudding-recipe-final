@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 def home():
     return render_template("home.html", page_title="Home")
 
+
 # Retrieve recipe data from mongodb
 @app.route("/get_recipes")
 def get_recipes():
@@ -34,6 +35,14 @@ def get_recipes():
 @app.route("/recipes")
 def recipes():
     return render_template("recipes.html", page_title="Recipes")
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    # User is able to search through Dessert list using search bar
+    search = request.form.get("search_bar")
+    recipe = list(mongo.db.recipes.find({"$text": {"$search": search}}))
+    return render_template("recipes.html", recipe=recipe)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -55,7 +64,8 @@ def login():
             else:
                 # Invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login", _external=True, _scheme='https'))
+                return redirect(url_for("login", _external=True,
+                scheme='https'))
 
         else:
             # Username does not exist
@@ -114,17 +124,6 @@ def add_recipe():
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("add_recipe.html")
-
-
-<<<<<<< HEAD
-@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
-def edit_recipe(recipe_id):
-    recipe = mongo.db.tasks.find_one({"_id": ObjectId(recipe_id)})
-=======
-@app.route("/edit_task/<task_id>", methods=["GET, POST"]
-def edit_task(task_id):
-    task = mongo.db.tasks.find_one({"id: ObjectId(task_id)")})
->>>>>>> 61cb2d9d7691c3e4e0e37c8555ffdb21a9b64119
 
 
 @app.route("/register", methods=["GET", "POST"])
