@@ -40,9 +40,11 @@ def recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     # User is able to search through Dessert list using search bar
-    search = request.form.get("search_bar")
+    search = request.args.get('search')
+    print(search)
     recipe = list(mongo.db.recipes.find({"$text": {"$search": search}}))
-    return render_template("recipes.html", recipe=recipe)
+    print(recipe)
+    return render_template("recipes.html", recipes=recipe)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -150,8 +152,28 @@ def register():
     return render_template("register.html", page_title="Register")
 
 
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    # Function to edit recipes
+    if request.method == "POST":
+        edit_recipe = {
+            "dessert_name": request.form.get("dessert_name"),
+            "dessert_image": request.form.get("dessert_image"),
+            "dessert_ingredients": ingredients_list,
+            "dessert_instructions": instructions_list,
+            "created_by": session["user"]
+        }
+
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit_recipe)
+        flash("Your recipe has been updated!")
+        return redirect(url_for("get_recipes"))
+
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("edit_dessert.html", recipies=recipe)
+
+
 if __name__ == "__main__":
     app.run(
-        host=os.environ.get("IP", "0,0,0,0"),
-        port=int(os.environ.get("PORT", "5000")),
-        debug=True)
+        host = os.environ.get("IP", "0,0,0,0"),
+        port = int(os.environ.get("PORT", "5000")),
+        debug = True)
