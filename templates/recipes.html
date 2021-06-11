@@ -4,55 +4,67 @@
 <!-- Search bar for recipes -->
 <nav>
     <div class="nav-wrapper">
-        <form>
-            <div class="input-field">
-                <input id="search" type="search" required>
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
+        <form action="{{ url_for('search') }}" method="GET" class="col s12">
+            <div class="input-field col s12">
+                <input id="search" type="search" required />
+                <label class="label-icon" name="for_search" for="search"><i class="material-icons"></i></label>
+                <i class="material-icons">CLOSE</i>
+            </div>
+            <!-- Search and Clear buttons -->
+            <div class="col s12 small-btns">
+                <a href="{{ url_for('get_recipes') }}" class="waves-effect waves-light btn-clear">CLEAR</a>
+                <button type="submit" class="btn submit-btn">"SEARCH"</button>
             </div>
         </form>
     </div>
 </nav>
-<section class="create-recipe">
-    <!-- Button to create new recipe -->
-    <div class="card-action">
-        <button class="btn waves-effect waves-light"> <a href="{{ url_for('add_recipe') }}" type="submit"
-                name="action">ADD
-                RECIPE
-        </button>
-    </div>
-</section>
+
+<!-- Display all recipes -->
 <section class="display-recipes">
     <!-- If the amount of recipes is greater than 0 -->
     {% if recipes|length > 0 %}
-    <!-- For loop to display all recipes from mongodb -->
-    {% for recipe in recipes %}
-          <!-- Edit button for existing recipe -->
-        <a href="" class="waves-effect waves-light btn-small">Done</a>
-        <a href="" class="waves-effect waves-light btn-small">Edit</a>
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
-        </div>
-        <!-- Dessert name -->
-        <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
-                    class="material-icons right"></i></span>
-            <!-- Save button for users who are logged in -->
-        
-        </div>
-       
-        <!-- Dessert ingredients shown when image clicked -->
-        <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">{{ recipe.dessert_name }}<i
-                    class="material-icons right">close</i></span>
-            <p class="dessert-ingredients">{{ recipe.dessert_ingredients }}</p>
-            <!-- Dessert instructions shown when image clicked -->
-            <p class="dessert-instructions">{{ recipe.dessert_instructions }}</p>
+    <div class="row">
+        <!-- For loop to display all recipes from mongodb -->
+        {% for recipe in recipes %}
+        <div class="col s12 col l6">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
+                            class="material-icons right"></i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                    <p>Ingredients:</p>
+                    <br>
+                    <p>{{ recipe.dessert_ingredients }}</p>
+                    <br>
+                    <p>Instructions:</p>
+                    <br>
+                    <p>{{ recipe.dessert_instructions }}</p>
+                    <p>
+                        <em>Created by: {{ recipe.created_by }}</em>
+                    </p>
+                    <br>
+                        </div>
+                        <!-- Show User's recipes -->
+                        {% if session.user|lower == recipes.created_by|lower %}
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id ) }}"
+                            class="btn-small green waves-effect waves-light">
+                        </a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    </div>
     {% endfor %}
+    </div>
+    </div>
     {% endif %}
-    <!-- Modal to check before deleting -->
     {% endblock %}
 </section>
