@@ -10006,3 +10006,10 @@ h3 {
     border-color: #dee2e6;
   }
 }
+
+/* Display recipes */
+
+.card {
+    height: 200px;
+    width: 200px;
+}
