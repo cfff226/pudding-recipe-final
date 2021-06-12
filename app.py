@@ -79,14 +79,12 @@ def profile(username):
 
     if session["user"]:
         # Display all of users recipes
-        username = mongo.db.users.find_one({"username": session['user']})
-        recipe = mongo.db.recipes.find({"created_by": session['user']})
-        recipe = list(recipe)
+        user = mongo.db.users.find_one({"username": session['user']})
+        recipe = list(mongo.db.recipes.find({"created_by": session['user']}))
         return render_template(
             "profile.html",
             username=username,
             recipe=recipe)
-
     else:
         return redirect(url_for("login"))
 
@@ -167,7 +165,7 @@ def edit_recipe(recipe_id):
         return redirect(url_for("get_recipes"))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("edit_recipe.html", recipes=recipe)
+    return render_template("edit_recipe.html", recipe=recipe)
 
 
 if __name__ == "__main__":
