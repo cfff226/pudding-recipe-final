@@ -24,17 +24,11 @@ def home():
     return render_template("home.html", page_title="Home")
 
 
-# Retrieve recipe data from mongodb
 @app.route("/get_recipes")
+# Retrieve recipe data from mongodb
 def get_recipes():
     recipe = list(mongo.db.recipes.find())
-    print(recipe)
     return render_template("recipes.html", recipes=recipe)
-
-
-@app.route("/recipes")
-def recipes():
-    return render_template("recipes.html", page_title="Recipes")
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -85,15 +79,19 @@ def profile(username):
 
     if session["user"]:
         # Display all of users recipes
-        return render_template("profile.html",
-                               username=username,
-                               recipes=recipes)
+        username = mongo.db.users.find_one({"username": session['user']})
+        recipe = mongo.db.recipes.find({"created_by": session['user']})
+        recipe = list(recipe)
+        return render_template(
+            "profile.html",
+            username=username,
+            recipe=recipe)
 
     else:
         return redirect(url_for("login"))
 
 
-@app.route("/logout")
+@ app.route("/logout")
 def logout():
     # Remove user from session cookies
     flash("You have been logged out")
@@ -101,19 +99,19 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_recipe", methods=["GET", "POST"])
+@ app.route("/add_recipe", methods = ["GET", "POST"])
 def add_recipe():
     # Get users form input and send to database
     if request.method == "POST":
-        dessert_ingredients = request.form.getlist("dessert_ingredients")
-        ingredients_list = []
+        dessert_ingredients=request.form.getlist("dessert_ingredients")
+        ingredients_list=[]
         for ingredients in dessert_ingredients:
             ingredients_list.append(ingredients)
-        dessert_instructions = request.form.getlist("dessert_instructions")
-        instructions_list = []
+        dessert_instructions=request.form.getlist("dessert_instructions")
+        instructions_list=[]
         for instructions in dessert_instructions:
             instructions_list.append(instructions)
-        dessert_recipe = {
+        dessert_recipe={
             "dessert_name": request.form.get("dessert_name"),
             "dessert_image": request.form.get("dessert_image"),
             "dessert_ingredients": ingredients_list,
@@ -128,7 +126,7 @@ def add_recipe():
     return render_template("add_recipe.html")
 
 
-@app.route("/register", methods=["GET", "POST"])
+@ app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         # Check if username exists in database
@@ -139,7 +137,7 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        register = {
+        register={
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
@@ -152,7 +150,7 @@ def register():
     return render_template("register.html", page_title="Register")
 
 
-@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+@ app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     # Function to edit recipes
     if request.method == "POST":
@@ -169,7 +167,7 @@ def edit_recipe(recipe_id):
         return redirect(url_for("get_recipes"))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("edit_dessert.html", recipies=recipe)
+    return render_template("edit_recipe.html", recipes=recipe)
 
 
 if __name__ == "__main__":
