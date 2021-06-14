@@ -34,9 +34,9 @@ def get_recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     # User is able to search through Dessert list using search bar
-    search = request.args.get('search')
-    print(search)
-    recipe = list(mongo.db.recipes.find({"$text": {"$search": search}}))
+    search_term = request.form["search"]
+    print(search_term)
+    recipe = list(mongo.db.recipes.find({"$text": {"$search": search_term}}))
     print(recipe)
     return render_template("recipes.html", recipes=recipe)
 
@@ -84,7 +84,7 @@ def profile(username):
         return render_template(
             "profile.html",
             username=username,
-            recipe=recipe)
+            recipes=recipe)
     else:
         return redirect(url_for("login"))
 
@@ -165,7 +165,7 @@ def edit_recipe(recipe_id):
         return redirect(url_for("get_recipes"))
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("edit_recipe.html", recipe=recipe)
+    return render_template("edit_recipe.html", recipes=recipe)
 
 
 if __name__ == "__main__":
