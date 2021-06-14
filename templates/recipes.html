@@ -4,10 +4,10 @@
 <!-- Search bar for recipes -->
 <nav>
     <div class="nav-wrapper">
-        <form action="{{ url_for('search') }}" method="GET" class="col s12">
+        <form action="{{ url_for('search') }}" method="POST" class="col s12">
             <div class="input-field col s12">
-                <input id="search" type="search" required />
-                <label class="label-icon" name="for_search" for="search"><i class="material-icons"></i></label>
+                <input id="search" name="search" type="search" required />
+                <label class="label-icon" for="search"><i class="material-icons"></i></label>
                 <i class="material-icons">CLOSE</i>
             </div>
             <!-- Search and Clear buttons -->
@@ -19,14 +19,16 @@
     </div>
 </nav>
 
+
 <!-- Display all recipes -->
-<section class="display-recipes">
     <!-- If the amount of recipes is greater than 0 -->
-    {% if recipes|length > 0 %}
     <div class="row">
+    {% if recipes|length > 0 %}
         <!-- For loop to display all recipes from mongodb -->
         {% for recipe in recipes %}
-        <div class="col s12 col l6">
+        {% for element in recipes %}
+        
+        <div class="col s4">
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
@@ -49,13 +51,6 @@
                     </p>
                     <br>
                         </div>
-                        <!-- Show User's recipes -->
-                        {% if session.user|lower == recipes.created_by|lower %}
-                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id ) }}"
-                            class="btn-small green waves-effect waves-light">
-                        </a>
-                        {% endif %}
-
                     </div>
                 </div>
             </div>
@@ -63,8 +58,8 @@
     </div>
     </div>
     {% endfor %}
+    {% endfor %}
     </div>
     </div>
     {% endif %}
     {% endblock %}
-</section>
