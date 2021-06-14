@@ -19,15 +19,12 @@
     </div>
 </nav>
 
-
 <!-- Display all recipes -->
     <!-- If the amount of recipes is greater than 0 -->
     <div class="row">
     {% if recipes|length > 0 %}
         <!-- For loop to display all recipes from mongodb -->
         {% for recipe in recipes %}
-        {% for element in recipes %}
-        
         <div class="col s4">
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -41,11 +38,19 @@
                     <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                     <p>Ingredients:</p>
                     <br>
-                    <p>{{ recipe.dessert_ingredients }}</p>
+                    <!-- For loop to loop through ingredients -->
+                    {% for ingredient in recipe.dessert_ingredients %}
+                    <p>{{ ingredient }}</p>
+                    <!-- Close loop -->
+                    {% endfor %}
                     <br>
                     <p>Instructions:</p>
                     <br>
-                    <p>{{ recipe.dessert_instructions }}</p>
+                    <!-- For loop to loop through instructions -->
+                    {% for instruction in recipe.dessert_instructions %}
+                    <p>{{ instruction }}</p>
+                    <!-- Close loop -->
+                    {% endfor %}
                     <p>
                         <em>Created by: {{ recipe.created_by }}</em>
                     </p>
@@ -57,7 +62,6 @@
         </div>
     </div>
     </div>
-    {% endfor %}
     {% endfor %}
     </div>
     </div>
