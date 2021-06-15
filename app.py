@@ -28,6 +28,7 @@ def home():
 # Retrieve recipe data from mongodb
 def get_recipes():
     recipe = list(mongo.db.recipes.find())
+    print(recipe)
     return render_template("recipes.html", recipes=recipe)
 
 
@@ -135,7 +136,7 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        register={
+        register ={
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
@@ -148,10 +149,18 @@ def register():
     return render_template("register.html", page_title="Register")
 
 
-@ app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
-def edit_recipe(recipe_id):
+@app.route("/edit_recipe/<recipes_id>", methods=["GET", "POST"])
+def edit_recipe(recipes_id):
     # Function to edit recipes
     if request.method == "POST":
+        dessert_ingredients=request.form.getlist("dessert_ingredients")
+        ingredients_list=[]
+        for ingredients in dessert_ingredients:
+            ingredients_list.append(ingredients)
+        dessert_instructions=request.form.getlist("dessert_instructions")
+        instructions_list=[]
+        for instructions in dessert_instructions:
+            instructions_list.append(instructions)
         edit_recipe = {
             "dessert_name": request.form.get("dessert_name"),
             "dessert_image": request.form.get("dessert_image"),
@@ -160,11 +169,11 @@ def edit_recipe(recipe_id):
             "created_by": session["user"]
         }
 
-        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit_recipe)
+        mongo.db.recipes.update({"_id": ObjectId(recipes_id)}, edit_recipe)
         flash("Your recipe has been updated!")
         return redirect(url_for("get_recipes"))
 
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
     return render_template("edit_recipe.html", recipes=recipe)
 
 
