@@ -2,7 +2,6 @@
 {% block content %}
 <h1>{{ page_title }}</h1>
 
-
 <h1>Edit your recipe</h1>
 <div class="container-fluid">
     <div class="row card-panel white center">
@@ -23,55 +22,55 @@
                     <label for="dessert_ingredients">Dessert ingredients</label>
                     <button class="add_ingredient_button">Add More Fields</button>
                     <div>
-                       </div>
-            <!-- Loop through list of ingredients -->
-            {% for ingred in recipes.dessert_ingredients|list %}
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="dessert_ingredients{{loop.index}}" name="dessert_ingredients" minlength="2" maxlength="60" type="text"
-                            value="{{ ingred }}" class="validate" required>
-                        <label for="dessert_ingredients{{loop.index}}">Ingredient {{loop.index}}:</label>
                     </div>
-                </div>
-            {% endfor %}
-            <!--Edit dessert instructions -->
-            <div class="row">
-                <div class="input_instruc_wrap col s12">
-                    <textarea id="dessert_instructions" name="dessert_instructions"
-                        class="materialize-textarea"></textarea>
-                    <label for="dessert_instruction">Dessert instructions</label>
-                    <button class="add_instruction_button">Add More Fields</button>
-                    <div>
-                    </div>        
-            <!-- Loop through list of instructions -->
-            {% for ingred in recipes.dessert_instructions|list %}
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="dessert_instructions{loop.index}}" name="dessert_instructions" minlength="2" maxlength="60" type="text"
-                            value="{{ ingred }}" class="validate" required>
-                        <label for="dessert_instructions{{loop.index}}">Instructions {{loop.index}}:</label>
+                    <!-- Loop through list of ingredients -->
+                    {% for ingred in recipes.dessert_ingredients|list %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="dessert_ingredients{{loop.index}}" name="dessert_ingredients" minlength="2"
+                                maxlength="60" type="text" value="{{ ingred }}" class="validate" required>
+                            <label for="dessert_ingredients{{loop.index}}">Ingredient {{loop.index}}:</label>
+                        </div>
                     </div>
-                </div>
-
-  
-
-{% endfor %}
-
-    <!-- Edit dessert image url-->
-    <div class="row">
-        <div class="input-field col s11">
-            <textarea id="dessert_image" name="dessert_image" class="materialize-textarea validate" required></textarea>
-            <label for="dessert_image">Add Image URL</label>
-        </div>
-<div class="row">
-    <div class="col s12 center-align">
-        <a href="{{ url_for('get_recipes') }}" class="btn waves-effect waves-light grey darken-3">
-            Cancel
-            <i class="fas fa-times right"></i>
-        </a>
-        <button class="btn waves-effect waves-light pink darken-3" type="submit">ADD NEW RECIPE
-            <i class="fas fa-check"></i>
-        </button>
-    </div>
-</div>
-        {% endblock %}
+                    {% endfor %}
+                    <!--Edit dessert instructions -->
+                    <div class="row">
+                        <div class="input_instruc_wrap col s12">
+                            <textarea id="dessert_instructions" name="dessert_instructions"
+                                class="materialize-textarea"></textarea>
+                            <label for="dessert_instruction">Dessert instructions</label>
+                            <button class="add_instruction_button">Add More Fields</button>
+                            <div>
+                            </div>
+                            <!-- Loop through list of instructions -->
+                            {% for ingred in recipes.dessert_instructions|list %}
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="dessert_instructions{loop.index}}" name="dessert_instructions"
+                                        minlength="2" maxlength="60" type="text" value="{{ ingred }}" class="validate"
+                                        required>
+                                    <label for="dessert_instructions{{loop.index}}">Instructions {{loop.index}}:</label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- Edit dessert image url-->
+                            <div class="row">
+                                <div class="input-field col s11">
+                                    <textarea id="dessert_image" name="dessert_image"
+                                        class="materialize-textarea validate" required></textarea>
+                                    <label for="dessert_image">Add Image URL</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <a href="{{ url_for('edit_recipe', recipes_id=recipes._id ) }}"
+                                            class="btn waves-effect waves-light grey darken-3">
+                                            Cancel
+                                            <i class="fas fa-times right"></i>
+                                        </a>
+                                        <button class="btn waves-effect waves-light pink darken-3" type="submit">ADD NEW
+                                            RECIPE
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                {% endblock %}
