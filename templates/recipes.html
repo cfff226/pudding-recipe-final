@@ -20,50 +20,57 @@
 </nav>
 
 <!-- Display all recipes -->
-    <!-- If the amount of recipes is greater than 0 -->
-    <div class="row">
+<!-- If the amount of recipes is greater than 0 -->
+<div class="row">
     {% if recipes|length > 0 %}
-        <!-- For loop to display all recipes from mongodb -->
-        {% for recipe in recipes %}
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
-                </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
-                            class="material-icons right"></i></span>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                    <p>Ingredients:</p>
-                    <br>
-                    <!-- For loop to loop through ingredients -->
-                    {% for ingredient in recipe.dessert_ingredients %}
-                    <p>{{ ingredient }}</p>
-                    <!-- Close loop -->
-                    {% endfor %}
-                    <br>
-                    <p>Instructions:</p>
-                    <br>
-                    <!-- For loop to loop through instructions -->
-                    {% for instruction in recipe.dessert_instructions %}
-                    <p>{{ instruction }}</p>
-                    <!-- Close loop -->
-                    {% endfor %}
-                    <p>
-                        <em>Created by: {{ recipe.created_by }}</em>
-                    </p>
-                    <br>
-                        </div>
-                    </div>
-                </div>
+    <!-- For loop to display all recipes from mongodb -->
+    {% for recipe in recipes %}
+    <div class="col s4">
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
+            </div>
+            <!-- Edit button for existing recipe -->
+            {% if session.user|lower == recipe.created_by|lower %}
+            <a href="{{ url_for('edit_recipe', recipes_id=recipe._id ) }}"
+                class="waves-effect waves-light btn-small">DELETE</a>
+            <a href="{{ url_for('edit_recipe', recipes_id=recipe._id )}}"
+                class="waves-effect waves-light btn-small">EDIT</a>
+            {% endif %}
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
+                        class="material-icons right"></i></span>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+                <p>Ingredients:</p>
+                <br>
+                <!-- For loop to loop through ingredients -->
+                {% for ingredient in recipe.dessert_ingredients %}
+                <p>{{ ingredient }}</p>
+                <!-- Close loop -->
+                {% endfor %}
+                <br>
+                <p>Instructions:</p>
+                <br>
+                <!-- For loop to loop through instructions -->
+                {% for instruction in recipe.dessert_instructions %}
+                <p>{{ instruction }}</p>
+                <!-- Close loop -->
+                {% endfor %}
+                <p>
+                    <em>Created by: {{ recipe.created_by }}</em>
+                </p>
+                <br>
             </div>
         </div>
     </div>
-    </div>
-    {% endfor %}
-    </div>
-    </div>
-    {% endif %}
-    {% endblock %}
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endif %}
+{% endblock %}
