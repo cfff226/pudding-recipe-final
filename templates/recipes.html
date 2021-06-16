@@ -19,6 +19,8 @@
     </div>
 </nav>
 
+
+
 <!-- Display all recipes -->
 <!-- If the amount of recipes is greater than 0 -->
 <div class="row">
@@ -26,45 +28,37 @@
     <!-- For loop to display all recipes from mongodb -->
     {% for recipe in recipes %}
     <div class="col s4">
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{ recipe.dessert_image }}" alt="an image of {{ recipe.dessert_name }}">
-            </div>
-            <!-- Edit button for existing recipe -->
-            {% if session.user|lower == recipe.created_by|lower %}
-            <a href="{{ url_for('edit_recipe', recipes_id=recipe._id ) }}"
-                class="waves-effect waves-light btn-small">DELETE</a>
-            <a href="{{ url_for('edit_recipe', recipes_id=recipe._id )}}"
-                class="waves-effect waves-light btn-small">EDIT</a>
-            {% endif %}
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ recipe.dessert_name }}<i
-                        class="material-icons right"></i></span>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                <p>Ingredients:</p>
-                <br>
-                <!-- For loop to loop through ingredients -->
-                {% for ingredient in recipe.dessert_ingredients %}
-                <p>{{ ingredient }}</p>
-                <!-- Close loop -->
-                {% endfor %}
-                <br>
-                <p>Instructions:</p>
-                <br>
-                <!-- For loop to loop through instructions -->
-                {% for instruction in recipe.dessert_instructions %}
-                <p>{{ instruction }}</p>
-                <!-- Close loop -->
-                {% endfor %}
-                <p>
-                    <em>Created by: {{ recipe.created_by }}</em>
-                </p>
-                <br>
-            </div>
+        <div class="card" style="width: 18rem;">
+            <img src="{{ recipe.dessert_image }}" class="card-img-top" alt="an image of {{ recipe.dessert_name }}">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Ingredients and Instructions</h5>
+            <br>
+            <!-- For loop to loop through ingredients -->
+            {% for ingredient in recipe.dessert_ingredients %}
+            <p>{{ ingredient }}</p>
+            <!-- Close loop -->
+            {% endfor %}
+            <!-- For loop to loop through instructions -->
+            {% for instruction in recipe.dessert_instructions %}
+            <p>{{ instruction }}</p>
+            <!-- Close loop -->
+            {% endfor %}
+            <p>
+            <em>Created by: {{ recipe.created_by }}</em>
+        </p>
+        <br>
+          <!-- Edit button for existing recipe -->
+        {% if session.user|lower == recipe.created_by|lower %}
+        <button type="button" a href="{{ url_for('edit_recipe', recipes_id=recipe._id ) }}"
+            class="btn btn-primary btn-sm">EDIT</button>
+        <button type="button" a href="{{ url_for('edit_recipe', recipes_id=recipe._id ) }}"
+            class="btn btn-primary btn-sm">DELETE</button>
+        {% endif %}
         </div>
     </div>
+</div>
+</div>
 </div>
 </div>
 </div>
