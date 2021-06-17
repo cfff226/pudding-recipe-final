@@ -613,8 +613,7 @@ pre code {
 
 .col {
   flex-basis: 0;
-
-  max-width: 100%;
+max-width: 100%;
 }
 
 .row-cols-1 > * {
@@ -9848,5 +9847,15 @@ background-color: white;
 .home-page-card {
     height:200px;
     width:400px;
+}
+
+/* Profile page */
+
+.profile-container {
+    padding-top: 100px; 
+    justify-content: center;
+    width: 50%;
+    text-align: center;
+    display: block;
 }
 
