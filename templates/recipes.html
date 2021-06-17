@@ -2,8 +2,8 @@
 {% block content %}
 <h1>Recipes</h1>
 <!-- Search bar for recipes -->
-<nav>
-    <div class="nav-wrapper">
+<div class="container-fluid">
+    <div class="wrapper">
         <form action="{{ url_for('search') }}" method="POST" class="col s12">
             <div class="input-field col s12">
                 <input id="search" name="search" type="search" required />
@@ -17,7 +17,7 @@
             </div>
         </form>
     </div>
-</nav>
+</div>
 
 
 
@@ -27,7 +27,7 @@
     {% if recipes|length > 0 %}
     <!-- For loop to display all recipes from mongodb -->
     {% for recipe in recipes %}
-    <div class="col s4">
+    <div class="col sm6">
         <div class="card" style="width: auto;">
             <img src="{{ recipe.dessert_image }}" class="card-img-top" alt="an image of {{ recipe.dessert_name }}">
             <div class="card-body">
@@ -59,14 +59,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
+    {% endif %}
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-{% endfor %}
-</div>
-</div>
-{% endif %}
 {% endblock %}
