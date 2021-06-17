@@ -9803,23 +9803,29 @@ h3 {
 
 /* Display recipes */
 
+.search-bar {
+    margin-top: 70px;
+}
+
+#search {
+    width: 100%;
+}
+
 .card-body {
 text-align: center;
 font-size: 10px;
 line-height: 2px;   /* within paragraph */
 margin-bottom: 2px; /* between paragraphs */
-margin-top: 30px;
+padding: 10px;
+box-shadow: 2px 5px black;
 background-color: white;
 }
 
-.card {
-    height: 200px;
-    background-color: white;
-}
-
 .card-img-top {
-    height: 300px;
-    width: 300px;
+    height: 100px;
+    width: 200px;
+    object-fit: cover;
+    float: left;
 }
 
 .card {
@@ -9839,3 +9845,4 @@ background-color: white;
     height:200px;
     width:400px;
 }
+
