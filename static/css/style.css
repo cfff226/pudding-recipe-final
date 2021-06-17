@@ -66,9 +66,13 @@ body {
   line-height: 1.5;
   color: #B0D0D3;
   text-align: left;
-  background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2855&q=80");
-
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: url("https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80") no-repeat center center fixed; 
 }
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -88,6 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-top: 0;
+  line-height: 20px;
   margin-bottom: 1rem;
   color: black;
 }
@@ -162,10 +167,12 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: black;
+  margin: 15px;
   text-decoration: none;
   background-color: transparent;
 }
+
 a:hover {
   color: #0056b3;
   text-decoration: underline;
@@ -605,6 +612,7 @@ pre code {
 
 .col {
   flex-basis: 0;
+
   max-width: 100%;
 }
 
@@ -3960,13 +3968,14 @@ input[type=button].btn-block {
 }
 
 .navbar {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+position: fixed;
+display: flex;
+flex-wrap: wrap;
+align-items: right;
+justify-content: space-between;
+padding: 0.5rem 1rem;
 }
+
 .navbar .container,
 .navbar .container-fluid,
 .navbar .container-sm,
@@ -4054,6 +4063,7 @@ input[type=button].btn-block {
 .navbar-expand-sm > .container-xl {
     padding-right: 0;
     padding-left: 0;
+    position:fixed;
   }
 }
 @media (min-width: 576px) {
@@ -5959,7 +5969,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color:  #C08497!important;
+  background-color:  #f7dff1 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -9794,15 +9804,16 @@ h3 {
 /* Display recipes */
 
 .card-body {
-    text-align: center;
-    font-size: 10px;
-    line-height: 2px;   /* within paragraph */
-  margin-bottom: 2px; /* between paragraphs */
-  margin-top: 30px;
+text-align: center;
+font-size: 10px;
+line-height: 2px;   /* within paragraph */
+margin-bottom: 2px; /* between paragraphs */
+margin-top: 30px;
+background-color: white;
 }
 
 .card {
-    height: 800px;
+    height: 200px;
     background-color: white;
 }
 
