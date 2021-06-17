@@ -168,6 +168,7 @@ sup {
 
 a {
   color: black;
+  text-shadow: #000 0px 0px 1px;
   margin: 15px;
   text-decoration: none;
   background-color: transparent;
@@ -3970,8 +3971,10 @@ input[type=button].btn-block {
 .navbar {
 position: fixed;
 display: flex;
+width: 100%;
 flex-wrap: wrap;
 align-items: right;
+z-index: 1000;
 justify-content: space-between;
 padding: 0.5rem 1rem;
 }
@@ -3993,6 +3996,7 @@ padding: 0.5rem 1rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
+  color: black; 
   line-height: inherit;
   white-space: nowrap;
 }
@@ -4316,7 +4320,7 @@ padding: 0.5rem 1rem;
 }
 
 .navbar-dark .navbar-brand {
-  color: #fff;
+  color: black;
 }
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
