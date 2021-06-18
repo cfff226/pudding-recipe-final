@@ -1,50 +1,65 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Add your recipe</h1>
-<div class="container-fluid">
-    <div class="row card-panel white center">
+<div class="add-recipe-container">
+    <div class="row card-panel black">
         <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
             <!--Add desert name -->
             <div class="row">
-                <div class="input-field col s11">
-                    <textarea id="dessert_name" name="dessert_name" class="materialize-textarea validate"
+                <label for="dessert_name">DESSERT NAME</label>
+                <div class="input-field col s12">
+                    <textarea id="dessert_name" placeholder="DESSERT NAME" name="dessert_name" class="materialize-textarea validate"
                         required></textarea>
-                    <label for="dessert_name">Dessert name</label>
                 </div>
             </div>
             <!--Add dessert ingredients -->
             <div class="row">
+                 <label for="dessert_ingredients">LIST THE METHOD HERE</label>
                 <div class="input_ingred_wrap col s12">
-                    <textarea id="dessert_ingredients" name="dessert_ingredients"
+                    <textarea id="dessert_ingredients" placeholder="INGREDIENTS" name="dessert_ingredients"
                         class="materialize-textarea"></textarea>
-                    <label for="dessert_ingredients">Dessert ingredients</label>
-                    <button class="add_ingredient_button">Add More Fields</button>
+                    <button class="add_ingredient_button">ADD FIELDS</button>
                     <div>
                         <name="mytext[]">
                     </div>
                 </div>
             </div>
-            <!--Add dessert instructions -->
-            <div class="row">
-                <div class="input_instruc_wrap col s12">
-                    <textarea id="dessert_instructions" name="dessert_instructions"
-                        class="materialize-textarea"></textarea>
-                    <label for="dessert_instruction">Dessert instructions</label>
-                    <button class="add_instruction_button">Add More Fields</button>
-                    <div>
-                        <name="mytext[]">
-                    </div>
+                    <!--Add dessert instructions -->
+                    <div class="row">
+                        <label for="dessert_instruction">LIST THE METHOD HERE</label>
+                        <div class="input_instruc_wrap col s12">
+                            <textarea id="dessert_instructions" placeholder="INSTRUCTIONS" name="dessert_instructions"
+                                class="materialize-textarea"></textarea>
+                            <button class="add_instruction_button">ADD FIELDS</button>
+                            <div>
+                                <name="mytext[]">
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Add dessert image url-->
+                        <div class="row">
+                            <label for="dessert_image">ADD IMAGE URL</label>
+                            <div class="input-field col s12">
+                                <textarea id="dessert_image" name="dessert_image" placeholder="INPUT IMAGE URL HERE" class="materialize-textarea validate"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <a href="{{ url_for('get_recipes') }}"
+                                    class="btn waves-effect waves-light grey darken-3">
+                                    Cancel
+                                    <i class="fas fa-times right"></i>
+                                </a>
+                                <button class="btn waves-effect waves-light pink darken-3" type="submit">ADD NEW RECIPE
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                </div>
+                            </div>
                 </div>
-            </div>
-    </div>
-      <!-- Add dessert image url-->
-      <div class="row">
-         <div class="input-field col s11">
-            <textarea id="dessert_image" name="dessert_image" class="materialize-textarea validate" required></textarea>
-            <label for="dessert_image">Add Image URL</label>
-         </div>
-<a class="waves-effect waves-light btn-small">SUBMIT</a>
-         </div>
-      </div>
+                </div>
+                </div>
+        </form>
+
 
         {% endblock %}
