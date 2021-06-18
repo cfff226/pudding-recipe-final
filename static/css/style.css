@@ -253,6 +253,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
+  width: 500px;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -9815,33 +9816,58 @@ h3 {
     width: 100%;
 }
 
-.card-body {
-text-align: center;
-font-size: 10px;
-line-height: 2px;   /* within paragraph */
-margin-bottom: 2px; /* between paragraphs */
-opacity: 0.8;
-padding: 10px;
-box-shadow: 2px 5px black;
-background-color: black;
+
+/* Card display CSS styling taken from https://www.w3schools.com/howto/howto_css_flip_card.asp and tweaked */
+
+/* The flip card container */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  display: inline-block;
 }
 
-.card-img-top {
-    height: 100px;
-    width: 200px;
-    object-fit: cover;
-    float: left;
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: noneß;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: black;
+  opacity: 0.9;
+  height: 800px;
+  color: white;
+  font-size: 10px;
+  line-height: normal;
+  transform: rotateY(180deg);
 }
 
 /* Home page */
@@ -9872,3 +9898,32 @@ background-color: black;
     
 }
 
+/* Registration page */
+
+.add-recipe-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0.8;
+    height: 100%;
+    margin-top: -100px; 
+    margin-left: -200px 
+} 
+
+.btn {
+background-color: white;
+}
+
+/* Add recipe page */
+
+/* Edit recipe page */
+
+.edit-recipe-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0.8;
+    height: 100%;
+    margin-top: -100px; 
+    margin-left: -200px 
+}
