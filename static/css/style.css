@@ -9874,9 +9874,14 @@ h3 {
 /* Grid to display cards */
 
 .grid-container {
-  display: inline-grid;
+    padding-top: 100px;
+    height: 100%;
 }
 
+.grid-item {
+    display: inline;
+
+}
 /* Home page */
 
 .home-page-card {
@@ -9900,6 +9905,7 @@ h3 {
 .home-card-container .row {
     padding-top: 10px;
     margin-left: 30px;
+}
 
 /* Profile page */
 
@@ -9909,7 +9915,6 @@ h3 {
     width: 50%;
     text-align: center;
     display: block;
-    
 }
 
 /* Registration page */
