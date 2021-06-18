@@ -64,7 +64,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #B0D0D3;
+  color: black;
   text-align: left;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -87,14 +87,14 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: black;
+  color: white;
 }
 
 p {
   margin-top: 0;
   line-height: 20px;
   margin-bottom: 1rem;
-  color: black;
+  color: white;
 }
 
 abbr[title],
@@ -167,7 +167,7 @@ sup {
 }
 
 a {
-  color: black;
+  color: white;
   text-shadow: #000 0px 0px 1px;
   margin: 15px;
   text-decoration: none;
@@ -2468,13 +2468,13 @@ fieldset:disabled a.btn {
 }
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #B0D0D3;;
+  border-color:  #B0D0D3;;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #0062cc;
-  border-color: #005cbf;
+  background-color:  #B0D0D3;
+  border-color:  #B0D0D3;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
@@ -3995,7 +3995,7 @@ padding: 0.5rem 1rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-  color: black; 
+  color: white; 
   line-height: inherit;
   white-space: nowrap;
 }
@@ -4319,7 +4319,7 @@ padding: 0.5rem 1rem;
 }
 
 .navbar-dark .navbar-brand {
-  color: black;
+  color: white;
 }
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
@@ -5972,7 +5972,8 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color:  #f7dff1 !important;
+  background-color:  black !important;
+  opacity: 0.9;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -9819,9 +9820,10 @@ text-align: center;
 font-size: 10px;
 line-height: 2px;   /* within paragraph */
 margin-bottom: 2px; /* between paragraphs */
+opacity: 0.8;
 padding: 10px;
 box-shadow: 2px 5px black;
-background-color: white;
+background-color: black;
 }
 
 .card-img-top {
@@ -9849,6 +9851,16 @@ background-color: white;
     width:400px;
 }
 
+.home-card-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px; 
+    width: 400px;
+    margin-left: -200px; 
+}
+
 /* Profile page */
 
 .profile-container {
@@ -9857,5 +9869,6 @@ background-color: white;
     width: 50%;
     text-align: center;
     display: block;
+    
 }
 
