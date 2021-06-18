@@ -167,7 +167,7 @@ sup {
 }
 
 a {
-  color: white;
+  color: lightblue;
   text-shadow: #000 0px 0px 1px;
   margin: 15px;
   text-decoration: none;
@@ -378,18 +378,22 @@ h1, h2, h3, h4, h5, h6,
 
 h1, .h1 {
   font-size: 2.5rem;
+  color: black;
 }
 
 h2, .h2 {
   font-size: 2rem;
+  color: black;
 }
 
 h3, .h3 {
   font-size: 1.75rem;
+  color: black;
 }
 
 h4, .h4 {
   font-size: 1.5rem;
+  color: black;
 }
 
 h5, .h5 {
@@ -3995,8 +3999,8 @@ padding: 0.5rem 1rem;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
-  color: white; 
+  font-size: 2rem;
+  color: lightblue; 
   line-height: inherit;
   white-space: nowrap;
 }
@@ -4320,7 +4324,8 @@ padding: 0.5rem 1rem;
 }
 
 .navbar-dark .navbar-brand {
-  color: white;
+  color: lightblue;
+  font-size: 2rem;
 }
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
@@ -9880,8 +9885,8 @@ h3 {
 
 .grid-item {
     display: inline;
-
 }
+
 /* Home page */
 
 .home-page-card {
