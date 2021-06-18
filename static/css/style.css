@@ -9817,7 +9817,7 @@ h3 {
 }
 
 
-/* Card display CSS styling taken from https://www.w3schools.com/howto/howto_css_flip_card.asp and tweaked */
+/* Card display CSS styling taken from https://www.w3schools.com/howto/howto_css_flip_card.asp and edited */
 
 /* The flip card container */
 .flip-card {
@@ -9870,6 +9870,13 @@ h3 {
   transform: rotateY(180deg);
 }
 
+
+/* Grid to display cards */
+
+.grid-container {
+  display: inline-grid;
+}
+
 /* Home page */
 
 .home-page-card {
@@ -9879,6 +9886,9 @@ h3 {
 
 .home-card-container {
     position: absolute;
+    background: black;
+    opacity: 0.9;
+    text-align: center;
     left: 50%;
     top: 50%;
     height: 200px;
@@ -9886,6 +9896,10 @@ h3 {
     width: 400px;
     margin-left: -200px; 
 }
+
+.home-card-container .row {
+    padding-top: 10px;
+    margin-left: 30px;
 
 /* Profile page */
 
@@ -9927,3 +9941,4 @@ background-color: white;
     margin-top: -100px; 
     margin-left: -200px 
 }
+
