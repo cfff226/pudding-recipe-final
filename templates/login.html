@@ -1,21 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="login-container">
 <h1>{{ page_title }}</h1>
+<div class="row">
+    <form class="col s12" method="POST" action="{{ url_for('login') }}">
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Placeholder" name="username" minlength="5" maxlength="15" type="text" class="validate">
+                <label for="username">USERNAME</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="password" minlength="5" maxlength="15" type="password" class="validate" required>
+                <label for="password">PASSWORD</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">LOG IN
+            <i class="material-icons right"></i>
+        </button>
 
-<form>
-    <div class="row">
-        <div class="col">
-            <input type="text" name="first-name" class="form-control" placeholder="First name">
-        </div>
-        <div class="col">
-            <input type="text" name="last-name" class="form-control" placeholder="Last name">
-        </div>
-        <div class="col">
-            <button class="btn waves-effect waves-light" type="submit" name="action">LOG IN
-                <i class="material-icons right"></i>
-            </button>
-        </div>
-    </div>
+</div>
 </form>
+</div>
+</div>
 
 {% endblock %}
