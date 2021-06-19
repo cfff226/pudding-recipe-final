@@ -9905,11 +9905,11 @@ width: 500px;
 /* Grid to display cards */
 
 .grid-container {
-    padding-top: 100px;
-    height: 100%;
-    opacity: 0.9;
+  padding-top: 100px;
+    justify-content: center;
+    text-align: center;
+    display: block;
 }
-
 .grid-item {
     display: inline-block;
     margin-bottom: 100px;
@@ -9954,7 +9954,6 @@ width: 500px;
 .profile-container {
     padding-top: 100px; 
     justify-content: center;
-    width: 50%;
     text-align: center;
     display: block;
 }
