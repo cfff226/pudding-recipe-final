@@ -9814,7 +9814,8 @@ h3 {
 /* Display recipes */
 
 .search-bar {
-    margin-top: 70px;
+    margin-top: 0px;
+    padding-top: 120px;
 }
 
 #search {
@@ -9829,7 +9830,7 @@ h3 {
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  border: none;
   perspective: 1000px;
   display: inline-block;
 }
