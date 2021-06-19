@@ -9822,6 +9822,11 @@ h3 {
     width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+.search-bar {
+width: 500px;
+}
+}
 
 /* Card display CSS styling taken from https://www.w3schools.com/howto/howto_css_flip_card.asp and edited */
 
@@ -9887,6 +9892,14 @@ h3 {
 .grid-item {
     display: inline;
 }
+
+
+@media only screen and (max-width: 600px) {
+.grid-item {
+    margin-left: 100px;
+}
+}
+
 
 /* Home page */
 
