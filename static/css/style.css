@@ -9835,6 +9835,11 @@ h3 {
     width: 100%;
 }
 
+.recipe-name {
+    background-color: black;
+    color: lightblue;
+}
+
 @media only screen and (max-width: 600px) {
 .search-bar {
 width: 500px;
@@ -9847,10 +9852,11 @@ width: 500px;
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 200px;
+  height: 350px;
   border: none;
   perspective: 1000px;
   display: inline-block;
+  overflow-y: scroll;
 }
 
 /* This container is needed to position the front and back side */
@@ -9880,6 +9886,7 @@ width: 500px;
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: #bbb;
+  z-index: 0;
   color: black;
 }
 
@@ -9888,24 +9895,26 @@ width: 500px;
   background-color: black;
   opacity: 0.9;
   height: 800px;
+  z-index: 1000;
   color: white;
   font-size: 10px;
   line-height: normal;
   transform: rotateY(180deg);
 }
 
-
 /* Grid to display cards */
 
 .grid-container {
     padding-top: 100px;
     height: 100%;
+    opacity: 0.9;
 }
 
 .grid-item {
-    display: inline;
+    display: inline-block;
+    margin-bottom: 100px;
+    position: relative;
 }
-
 
 @media only screen and (max-width: 600px) {
 .grid-item {
@@ -9927,7 +9936,8 @@ width: 500px;
     opacity: 0.9;
     text-align: center;
     left: 50%;
-    top: 50%;
+    top: 40%;
+    padding-top: 10px;
     height: 200px;
     margin-top: -100px; 
     width: 400px;
@@ -9989,4 +9999,27 @@ background-color: white;
 /* Login page */
 .login-container {
     padding-top: 150px;
+}
+
+/* text links */
+
+/* unvisited link */
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: lightblue;
+}
+
+/* mouse over link */
+a:hover {
+  color: lightpink;
+}
+
+/* selected link */
+a:active {
+  color: lightpink;
 }
