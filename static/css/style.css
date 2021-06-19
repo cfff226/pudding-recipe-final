@@ -587,6 +587,13 @@ pre code {
     max-width: 1140px;
   }
 }
+
+@media only screen and (max-width: 600px) {
+.container-fluid {
+    padding-top: 80px;
+}}
+
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -2449,6 +2456,12 @@ textarea.form-control {
 }
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+.btn {
+    width: 100px;
+}
 }
 a.btn.disabled,
 fieldset:disabled a.btn {
@@ -9966,3 +9979,7 @@ background-color: white;
     margin-left: -200px 
 }
 
+/* Login page */
+.login-container {
+    padding-top: 150px;
+}
