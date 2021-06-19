@@ -110,7 +110,7 @@ def add_recipe():
         instructions_list=[]
         for instructions in dessert_instructions:
             instructions_list.append(instructions)
-        dessert_recipe={
+        dessert_recipe = {
             "dessert_name": request.form.get("dessert_name"),
             "dessert_image": request.form.get("dessert_image"),
             "dessert_ingredients": ingredients_list,
@@ -175,6 +175,13 @@ def edit_recipe(recipes_id):
 
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipes_id)})
     return render_template("edit_recipe.html", recipes=recipe)
+
+
+@app.route("/delete_recipe/<recipes_id>")
+def delete_recipe(recipes_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipes_id)})
+    flash("Recipe successfully deleted")
+    return redirect(url_for("get_recipes"))
 
 
 if __name__ == "__main__":
