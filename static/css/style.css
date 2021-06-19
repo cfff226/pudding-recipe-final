@@ -9951,6 +9951,13 @@ width: 500px;
 
 /* Registration page */
 
+.register-container {
+    padding-top: 150px;
+}
+
+
+/* Add recipe page */
+
 .add-recipe-container {
     position: absolute;
     left: 50%;
