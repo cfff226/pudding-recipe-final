@@ -7,7 +7,8 @@ The aim is to eventually showcase a catalogue of desserts which can be used for 
 
 [Wireframes] (https://drive.google.com/file/d/18EdVVXQWrYRqrylLX6Nof3PVaW27khJJ/view?usp=sharing)
 
-[Balsamiq] (https://balsamiq.com/) was to create the following Wireframes:
+[Balsamiq] (https://balsamiq.com/) 
+* All wireframes were created using Balsamiq software, since creating the wireframes, the design of the whole website had changed a lot.
 
 * Desktop/large screen 
 * Tablet screen 
@@ -86,13 +87,6 @@ All images used were from Unsplash, these are images that the website will begin
 [The background image] ("https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80")
 
 
-### Wireframes:
-
-* All wireframes were created using Balsamiq software, since creating the wireframes, the design of the whole website had changed a lot.
-
-* Please see below for links of all Wireframes:
-
-
 ### Features:
 
 ### Adding a recipe:
@@ -111,17 +105,15 @@ only the website administrator will have full access to.
 
 * User access is limited to their own input, this enables users to use the CRUD - Create, Read, Update and Delete - on any of their own recipes.
 
-### Additional Functions:
-
 ## Testing
 
 ### Google Chrome Lighthouse
 
 * I used this testing method towards the end of my project and the score was very high at 97%:
+.
+* [Lighthouse overall score] (https://drive.google.com/file/d/1ju1C8xFnCoiSscz_G4W2pNdRtHq_pmGu/view?usp=sharing).
 
-* [Lighthouse overall score] (https://drive.google.com/file/d/1ju1C8xFnCoiSscz_G4W2pNdRtHq_pmGu/view?usp=sharing)
-
-* 87% score on best practices https://drive.google.com/file/d/1Sz6TXAklMFRu2QLT7uVvw2xnaJZ4Os1P/view?usp=sharing
+* 87% score on best practices (https://drive.google.com/file/d/1Sz6TXAklMFRu2QLT7uVvw2xnaJZ4Os1P/view?usp=sharing).
 
 * There weren't any major errors to fix after this feedback, but I did make changes to the following:
 
@@ -138,7 +130,7 @@ made to my project, so I went through and removed only some of what it showed.
 
 * There was a name missed out on a form - This was corrected.
 
-* A lot of CSS was showing as being redundant, however when I removed some in attempt to clear, it was showing as active css and making changes.
+* A lot of CSS was showing as being inactive, however when I removed some in attempt to clear, it was showing as active css and making changes.
 
 
 ## User stories testing:
