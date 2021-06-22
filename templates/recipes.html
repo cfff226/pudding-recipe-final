@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Recipes</h1>
 <!-- Search bar for recipes -->
 <div class="search-bar">
     <div class="wrapper">
+        <h1 class="recipes-title">Recipes</h1>
+        <h4>Hover over the pictures for more information</h4>
         <form action="{{ url_for('search') }}" method="POST" class="col s12">
             <div class="input-field col s12">
                 <input id="search" name="search" placeholder="SEARCH FOR A RECIPE" type="search" required />
-                <label class="label-icon" for="search"><i class="material-icons"></i></label>
+                <label class="label-icon" for="search"><i class="material-icons">Search</i></label>
                 <i class="material-icons">CLOSE</i>
             </div>
             <!-- Search and Clear buttons -->
@@ -18,8 +19,6 @@
         </form>
     </div>
 </div>
-
-
 <!-- Display all recipes -->
 <div class="grid-container">
     <!-- If the amount of recipes is greater than 0 -->
@@ -31,11 +30,11 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
+                    <h1 class="recipe-name">{{ recipe.dessert_name }}</h1>
                     <img src="{{ recipe.dessert_image }}" alt="An image of {{ recipe.dessert_name }}"
                         style="width:300px;height:300px;">
                 </div>
                 <div class="flip-card-back">
-                    <h1>{{ recipe.dessert_name }}</h1>
                     <!-- For loop to loop through ingredients -->
                     <h5>Ingredients</h5>
                     {% for ingredient in recipe.dessert_ingredients %}
@@ -56,8 +55,8 @@
                     {% if session.user|lower == recipe.created_by|lower %}
                     <a href="{{ url_for('edit_recipe', recipes_id=recipe._id ) }}" class="btn btn-primary btn-lg active"
                         role="button" aria-pressed="true">EDIT</a>
-                    <a href="{{ url_for('delete_recipe', recipes_id=recipe._id ) }}" class="btn btn-primary btn-lg active"
-                        role="button" aria-pressed="true">DELETE</a>
+                    <a href="{{ url_for('delete_recipe', recipes_id=recipe._id ) }}"
+                        class="btn btn-primary btn-lg active" role="button" aria-pressed="true">DELETE</a>
                     {% endif %}
                 </div>
             </div>
@@ -67,6 +66,5 @@
     {% endif %}
 </div>
 {% endblock %}
-</div>
 </div>
 </div>
