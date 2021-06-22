@@ -11,6 +11,7 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
+
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -87,7 +88,7 @@ def profile(username):
             username=username,
             recipes=recipe)
     else:
-        return redirect(url_for("login"))
+        return redirect(url_for("login", page_title="Login Page"))
 
 
 @ app.route("/logout")
@@ -95,19 +96,19 @@ def logout():
     # Remove user from session cookies
     flash("You have been logged out")
     session.pop("user")
-    return redirect(url_for("login"))
+    return redirect(url_for("login", page_title="Login Page"))
 
 
-@ app.route("/add_recipe", methods = ["GET", "POST"])
+@ app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     # Get users form input and send to database
     if request.method == "POST":
-        dessert_ingredients=request.form.getlist("dessert_ingredients")
-        ingredients_list=[]
+        dessert_ingredients = request.form.getlist("dessert_ingredients")
+        ingredients_list = []
         for ingredients in dessert_ingredients:
             ingredients_list.append(ingredients)
-        dessert_instructions=request.form.getlist("dessert_instructions")
-        instructions_list=[]
+        dessert_instructions = request.form.getlist("dessert_instructions")
+        instructions_list = []
         for instructions in dessert_instructions:
             instructions_list.append(instructions)
         dessert_recipe = {
@@ -136,7 +137,7 @@ def register():
             flash("Username already exists")
             return redirect(url_for("register"))
 
-        register ={
+        register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
         }
@@ -153,12 +154,12 @@ def register():
 def edit_recipe(recipes_id):
     # Function to edit recipes
     if request.method == "POST":
-        dessert_ingredients=request.form.getlist("dessert_ingredients")
-        ingredients_list=[]
+        dessert_ingredients = request.form.getlist("dessert_ingredients")
+        ingredients_list = []
         for ingredients in dessert_ingredients:
             ingredients_list.append(ingredients)
-        dessert_instructions=request.form.getlist("dessert_instructions")
-        instructions_list=[]
+        dessert_instructions = request.form.getlist("dessert_instructions")
+        instructions_list = []
         for instructions in dessert_instructions:
             instructions_list.append(instructions)
         edit_recipe = {
@@ -186,6 +187,6 @@ def delete_recipe(recipes_id):
 
 if __name__ == "__main__":
     app.run(
-        host = os.environ.get("IP", "0,0,0,0"),
-        port = int(os.environ.get("PORT", "5000")),
-        debug = True)
+        host=os.environ.get("IP", "0,0,0,0"),
+        port=int(os.environ.get("PORT", "5000")),
+        debug=True)
