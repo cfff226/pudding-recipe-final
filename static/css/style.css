@@ -7323,6 +7323,7 @@ width: 500px;
 
 .register-container {
     padding-top: 150px;
+    margin-left: 20px;
 }
 
 
@@ -7359,6 +7360,7 @@ background-color: white;
 /* Login page */
 .login-container {
     padding-top: 150px;
+    margin-left: 20px;
 }
 
 /* text links */
